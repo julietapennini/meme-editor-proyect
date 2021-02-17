@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!------------Favicon------------>
+    <!--- # Open Graph Meta Tags # -->
+
+    <!---Type--->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Coda+Caption:wght@800&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Oswald:wght@400;500;600;700&family=Roboto:wght@400;900&family=Russo+One&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!---Facebook--->
+    <meta property="og:title" content="Julieta Pennini - Editor de memes">
+    <meta property="og:description" content="Colocá cualquier imagen y generá un meme al instante">
+    <meta property="og:type" content="article">
+    <meta property="og:site name" content="Julieta Pennini">
+    <meta property="og:url" content="https://julietapennini.github.io/julietapennini/">
+    <meta property="og:image" content="https://ibb.co/2K1qccC">
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+
+    <!---Twitter--->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://julietapennini.github.io/julietapennini/">
+    <meta property="twitter:title" content="Julieta Pennini - Editor de memes">
+    <meta property="twitter:description" content="Colocá cualquier imagen y generá un meme al instante">
+    <meta property="twitter:image" content="https://ibb.co/2K1qccC">
+
+    <!---Links CSS--->
+    <link rel="stylesheet" href="./styles.css"/>
+
+    <!---Icons--->
+    <script src="https://kit.fontawesome.com/e724a02081.js" crossorigin="anonymous"></script>
+
+    <!---Title--->
+    <title>Meme editor</title>
+</head>
+
+<body class="dark-theme">
+
+    <!---------------------------------------########## MAIN - Viewer ##########-------------------------------->
+    <main id="main-container">
+        <!------------------::::::::::::::::: Header Buttons :::::::::::::::::------------------>
+        <header>
+            <h1 class="app-title">Meme editor</h1>
+            <div class="buttons-container panel-buttons">
+                <button class="button button-text" id="img-panel-button" aria-label="Image Settings">
+                    <i class="fas fa-images"></i>&nbsp Image
+                </button>
+                <button class="button button-text" id="text-panel-button" aria-label="Text Settings">
+                    <i class="fas fa-text-width"></i>&nbsp Text
+                </button>
+                <button class="button button-text button-theme button-theme-dark hidden" id="dark-theme-button" aria-label="Dark Mode">
+                    <i class="fas fa-moon"></i>&nbsp Dark Mode
+                </button>
+                <button class="button button-text button-theme button-theme-light" id="light-theme-button" aria-label="Light Mode">
+                    <i class="fas fa-sun"></i></i>&nbsp Light Mode
+                </button>
+            </div>
+        </header>
+     
+        <!------------------::::::::::::::::: Meme container :::::::::::::::::------------------>
+        <div class="meme-container">
+            <div class="canvas-meme" id="canvas-meme">
+                <p class="text-meme" id="top-text" aria-label="Top text">TOP TEXT</p>
+                <div src(unknown) class="img-space" id="image-meme" aria-label="Your image goes here" alt="Image Viewer"></div>
+                <p class="text-meme" id="bottom-text" aria-label="Bottom text">BOTTOM TEXT</p>
+            </div>
+            <button type="button" class="button button-text" id="download-meme-button">
+                <i class="fas fa-angle-double-down"></i>&nbsp Download meme
+            </button>
+        </div>
+    </main>
+
+    <!---------------------------------------########## CLOSE button ##########-------------------------------->
+    <input name="Open/Close" type="checkbox" class="open-close-button" id="open-close-button" aria-label="Open and close button edition panel">
+    <i class="fas fa-times"></i>
+
+
+
+    <!-----------------------------########## ASIDE - Editor options ##########------------------------------------------>
+    <aside class="panel hidden" id="principal-editor-container">
+
+        <!------------------::::::::::::::::: IMAGE Panel Start :::::::::::::::::------------------>
+        <section class="panel-img" id="img-panel">
+            <h2 class="panel-title">Image</h2>
+
+            <!-------[ URL ]------>
+            <div class="panel-control">
+                <h3 class="panel-control-title">URL</h3>
+                <input type="text" class="panel-control-input" id="url-img-input" aria-label="URL image">
+            </div>
+
+            <!-------[ BACKGROUND ]------>
+            <div class="panel-control">
+                <h3 class="panel-control-title">Background</h3>
+                <div class="panel-control-columns">
+                    <div class="panel-control-color panel-control-column"> 
+                        <input type="color" id="blend-mode-color-input" value="#FFFFFF" aria-label="Background color">
+                        <span id="blend-mode-color" aria-hidden="true">#FFFFFF</span>
+                    </div>
+                    <div class="panel-control-colum">
+                        <select class="panel-control-input" id="blend-mode-select" aria-label="Background intensity adjustment">
+                            <option value="unset">Unset</option>
+                            <option value="lighten">Lighten</option>
+                            <option value="darken">Darken</option>
+                            <option value="difference">Difference</option>
+                            <option value="luminosity">Luminosity</option>
+                            <option value="multiply">Multiply</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-------[ FILTERS ]------>
+            <div class="panel-control">
+
+                <h3 class="panel-control-title">Filters</h3>
+
+                <div class="panel-control-slider">
+                    <label for="brightness-slider">Brightness</label>
+                    <input type="range" id="brightness-slider" min="0" max="1" value="1" step="0.1">
+                 </div>
+
+                <div class="panel-control-slider">
+                    <label for="opacity-slider">Opacity</label>
+                    <input type="range" id="opacity-slider" min="0" max="1" value="1" step="0.1">
+                </div>
+
+                <div class="panel-control-slider">
+                    <label for="contrast-slider">Contrast</label>
+                    <input type="range" id="contrast-slider" min="100" max="1000" value="100">
+                </div>
+
+                <div class="panel-control-slider">
+                    <label for="blur-slider">Blur</label>
+                    <input type="range" id="blur-slider" min="0" max="10" value="0" step="0.1">
+                </div>
+
+                <div class="panel-control-slider">
+                    <label for="grayscale-slider">Grayscale</label>
+                    <input type="range" id="grayscale-slider" min="0" max="100" value="0">
+                </div>
+
+                <div class="panel-control-slider">
+                    <label for="sepia-slider">Sepia</label>
+                    <input type="range" id="sepia-slider" min="0" max="100" value="0">
+                </div>
+
+                <div class="panel-control-slider">
+                    <label for="hue-slider">Hue</label>
+                    <input type="range" id="hue-slider" min="0" max="360" value="0">
+                </div>
+
+                <div class="panel-control-slider">
+                    <label for="saturation-slider">Saturation</label>
+                    <input type="range" id="saturation-slider" min="100" max="1000" value="100" step="10">
+                </div>
+
+                <div class="panel-control-slider">
+                    <label for="invert-slider">Invert</label>
+                    <input type="range" id="Invert-slider" min="0" max="10" value="0" step="0.1">
+                </div>
+
+            </div>
+
+            <button class="button button-default" id="default-filters-button">Resert filters</button>
+        </section>
+
+        <!------------------::::::::::::::::: TEXT Panel Start :::::::::::::::::------------------>
+        <section class="panel-text hidden" id="text-panel">
+            <h2 class="panel-title">Text</h2>
+
+            <!-------[ TOP TEXT ]------>
+            <div class="panel-control">
+                    <h3 class="panel-control-title">Top</h3>
+                    <textarea aria-label="Top text" class="panel-control-input" id="top-text-input">Top text input</textarea>
+                    <div class="flex-container panel-control-checkbox">
+                        <input type="checkbox" id="no-top-text-checkbox">
+                        <label for="no-top-text-checkbox">Without top text</label>
+                    </div>
+            </div>
+
+            <!-------[ BOTTOM TEXT ]------>
+            <div class="panel-control">
+                    <h3 class="panel-control-title">Bottom</h3>
+                    <textarea aria-label="Bottom text" class="panel-control-input" id="bottom-text-input">Bottom text input</textarea>
+                    <div class="flex-container panel-control-checkbox">
+                        <input type="checkbox" id="no-bottom-text-checkbox">
+                        <label for="no-bottom-text-checkbox">Without bottom text</label>
+                    </div>
+            </div>
+            
+            <!-------[ FONT ]------>
+            <div class="panel-control">
+                <h3 class="panel-control-title">Font</h3>
+                <!----Font family---->
+                <select name="Font Family" id="text-font-select" class="panel-control-input" aria-label="Text Family">
+                    <option value="Courier New">Courier New</option>
+                    <option value="Helvetica">Helvetica</option>
+                    <option value="Impact">Impact</option>
+                    <option value="Forte">Forte</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Cooper Black">Cooper Black</option>           
+                </select>
+                <!----Font size and text align---->
+                <div class="flex-container">
+                        <input type="number" name="Font size" aria-label="Font size" class="panel-control-input" id="font-size-input" min="12" value="40">
+                        <div class="buttons-container buttons-alignment">
+                            <button class="button button-default" id="align-left-button" aria-label="Justify Left">
+                                <i class="fas fa-align-left" aria-hidden="true"></i>
+                            </button>
+                            <button class="button button-default" id="align-center-button" aria-label="Justify Center">
+                                <i class="fas fa-align-justify" aria-hidden="true"></i>
+                            </button>
+                            <button class="button button-default" id="align-right-button" aria-label="Justify Right">
+                                <i class="fas fa-align-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+            </div>
+
+            <!-------[ COLOR ]------>
+            <div class="panel-control">
+                <div class="panel-control-columns">
+                    <!----Font color--->
+                    <div class="panel-control panel-control-column">
+                        <h3 class="panel-control-title">Color</h3>
+                        <div class="panel-control-color">
+                            <input name="Text color" type="color" id="text-color-input" value="#000000" aria-label="Text Color">
+                            <span id="text-color" aria-hidden="true">#000000</span>
+                        </div>
+                    </div>
+                    <!----Background color--->
+                    <div class="panel-control panel-control-column"> 
+                        <h3 class="panel-control-title">Background</h3>
+                        <div class="panel-control-color">
+                            <input name="Background color" type="color" id="text-background-color-input" value="#FFFFFF" aria-label="Background Color">
+                            <span id="text-background-color" aria-hidden="true">#FFFFFF</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-container panel-control-checkbox">
+                    <input type="checkbox" id="text-no-background-checkbox">
+                    <label for="text-no-background-checkbox">Trasparent</label>
+                </div>
+            </div>
+
+            <!-------[ OUTLINE ]------>
+            <div class="panel-control">
+                <h3 class="panel-control-title">Outline</h3>
+                <div class="buttons-container">
+                    <button class="button button-default" id="no-outline-button">None</button>
+                    <button class="button button-default" id="light-outline-button">Light</button>
+                    <button class="button button-default" id="dark-outline-button">Dark</button>
+                </div>
+            </div>
+
+            <!-------[ LETTER SPACING ]------>
+            <div class="panel-control">
+                <h3 class="panel-control-title">Letter spacing</h3>
+                <input type="number" id="letter-spacing-input" class="panel-control-input" aria-label="Letter spacing" min="10" max="50" value="0">
+            </div>
+
+            <!-------[ LINE HEIGHT ]------>
+            <div class="panel-control">
+                <h3 class="panel-control-title">Interlined</h3>
+                <select id="line-height-input" class="panel-control-input" aria-label="Line Height">
+                    <option value="0.8">0.8</option>
+                    <option value="1">1</option>
+                    <option value="1.2">1.2</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2">2</option>
+                    <option value="2.5">2.5</option>
+                </select>
+            </div>
+        </section>
+        
+    </aside>
+    
+    <!---Links JS--->
+    <script src="./js/main.js"></script>
+    <script src="./js/img-editor.js"></script>
+    <script src="./js/text-editor.js"></script>
+</body>
+</html>
